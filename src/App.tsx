@@ -88,8 +88,8 @@ export default function App() {
           ))}
         </div>
 
-        {/* Sample selector */}
-        <div className="flex items-center gap-1 mb-3"
+        {/* Sample selector + Start/Restart */}
+        <div className="flex items-center gap-1"
           style={{
             background: 'rgba(0,0,0,0.5)',
             backdropFilter: 'blur(12px)',
@@ -111,33 +111,33 @@ export default function App() {
               {n}
             </button>
           ))}
-        </div>
 
-        {/* Start / Restart */}
-        {!running && (
+          <div style={{ width: 1, height: 18, background: 'rgba(255,255,255,0.08)', margin: '0 4px' }} />
+
           <button
             onClick={handleStartOrRestart}
-            className="px-6 py-2.5 text-[11px] font-medium tracking-[0.15em] uppercase rounded-sm cursor-pointer transition-all duration-200"
+            disabled={running}
+            className="text-[10px] font-medium tracking-[0.12em] uppercase h-7 px-3 rounded-sm transition-all duration-150"
             style={{
-              background: hasRender ? 'transparent' : 'rgba(255,255,255,0.07)',
-              border: hasRender ? '1px solid rgba(255,255,255,0.08)' : '1px solid rgba(255,255,255,0.12)',
-              color: hasRender ? 'rgba(255,255,255,0.3)' : 'rgba(255,255,255,0.65)',
-              backdropFilter: 'blur(12px)',
+              background: running ? 'transparent' : (hasRender ? 'transparent' : 'rgba(255,255,255,0.1)'),
+              border: 'none',
+              color: running ? 'rgba(255,255,255,0.2)' : (hasRender ? 'rgba(255,255,255,0.4)' : 'rgba(255,255,255,0.7)'),
+              cursor: running ? 'default' : 'pointer',
             }}
             onMouseEnter={e => {
-              e.currentTarget.style.background = hasRender ? 'rgba(255,255,255,0.07)' : 'rgba(255,255,255,0.14)'
-              e.currentTarget.style.color = hasRender ? 'rgba(255,255,255,0.6)' : 'rgba(255,255,255,0.9)'
-              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)'
+              if (running) return
+              e.currentTarget.style.background = 'rgba(255,255,255,0.14)'
+              e.currentTarget.style.color = 'rgba(255,255,255,0.9)'
             }}
             onMouseLeave={e => {
-              e.currentTarget.style.background = hasRender ? 'transparent' : 'rgba(255,255,255,0.07)'
-              e.currentTarget.style.color = hasRender ? 'rgba(255,255,255,0.3)' : 'rgba(255,255,255,0.65)'
-              e.currentTarget.style.borderColor = hasRender ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.12)'
+              if (running) return
+              e.currentTarget.style.background = hasRender ? 'transparent' : 'rgba(255,255,255,0.1)'
+              e.currentTarget.style.color = hasRender ? 'rgba(255,255,255,0.4)' : 'rgba(255,255,255,0.7)'
             }}
           >
-            {hasRender ? 'Restart' : 'Start'}
+            {running ? 'Rendering\u2026' : (hasRender ? 'Restart' : 'Start')}
           </button>
-        )}
+        </div>
       </div>
     </div>
   )
