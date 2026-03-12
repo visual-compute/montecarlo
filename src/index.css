@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background: #050510;
+  color: #e0e0e8;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+}
+
+
+:root {
+  --glow-blue: #4a7dff;
+  --glow-cyan: #00d4ff;
+  --bg-dark: #050510;
+  --bg-card: rgba(255,255,255,0.03);
+  --border-subtle: 1px solid rgba(255,255,255,0.08);
+  --text-dim: rgba(255,255,255,0.4);
+  --text-mid: rgba(255,255,255,0.7);
+}
+
+.font-mono {
+  font-family: 'Space Mono', monospace;
+}
+
+/* Glow effect for active elements */
+.glow-border {
+  box-shadow: 0 0 20px rgba(74, 125, 255, 0.15), inset 0 0 20px rgba(74, 125, 255, 0.05);
+}
+
+/* Canvas rendering */
+canvas {
+  image-rendering: auto;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.15);
+  border-radius: 3px;
+}
